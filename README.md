@@ -2,6 +2,7 @@ OmikujiSign
 ===========
 
 おみくじができる看板プラグイン
+![スクリーンショット](https://raw.githubusercontent.com/ucchyocean/OmikujiSign/master/release/2014-09-29_23.54.57.png) 
 
 使い方
 ------
@@ -11,4 +12,4 @@ pluginsフォルダに、OmikujiSign.jar を入れて、CraftBukkitを起動し�
 
 ダウンロード
 ------------
-
+https://github.com/ucchyocean/OmikujiSign/blob/master/release/OmikujiSign-v0.0.1.zip?raw=true
