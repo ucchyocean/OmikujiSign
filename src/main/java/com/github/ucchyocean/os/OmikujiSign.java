@@ -136,7 +136,7 @@ public class OmikujiSign extends JavaPlugin implements Listener {
                     }
 
                 } else {
-                    //
+                    // タスク終了
 
                     sign.setLine(1, items.get(index));
                     sign.update();
