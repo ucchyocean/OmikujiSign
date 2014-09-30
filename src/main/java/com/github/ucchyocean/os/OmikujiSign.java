@@ -8,7 +8,10 @@ package com.github.ucchyocean.os;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
@@ -30,8 +33,14 @@ public class OmikujiSign extends JavaPlugin implements Listener {
 
     private static final int MIN_ROLL_TIMES = 15;
     private static final int MAX_ROLL_TIMES = 25;
-    private static final String[] ITEMS =
-        {"§4大吉", "§5吉", "§2小吉", "§3末吉", "§9凶", "§8大凶"};
+    private static final String[] ITEMS = {
+        "§4大吉",
+        "§5吉", "§5吉",
+        "§2小吉", "§2小吉", "§2小吉",
+        "§3末吉", "§3末吉", "§3末吉",
+        "§9凶",
+        "§8大凶"
+    };
 
     private static JavaPlugin instance;
 
@@ -91,6 +100,10 @@ public class OmikujiSign extends JavaPlugin implements Listener {
         // メタデータを入れて、スロットをクリック禁止にする
         sign.setMetadata(SLOT_META_NAME, new FixedMetadataValue(this, true));
 
+        // スロット開始音を鳴らす
+        sign.getWorld().playSound(sign.getLocation(), Sound.ORB_PICKUP, 1, 1);
+        sign.getWorld().playEffect(sign.getLocation(), Effect.STEP_SOUND, 8);
+
         // 同期タイマータスクを開始
         new BukkitRunnable() {
 
@@ -118,12 +131,18 @@ public class OmikujiSign extends JavaPlugin implements Listener {
                 } else if ( -13 < count && count <= 0 ) {
                     // スロット回転終了、結果を点滅させる
 
+                    // カウント0の時に、音を鳴らしてエフェクトを発生させる
+                    if ( count == 0 ) {
+                        sign.getWorld().playSound(sign.getLocation(), Sound.LEVEL_UP, 1, 1);
+                        sign.getWorld().playEffect(sign.getLocation(), Effect.POTION_BREAK, 6);
+                    }
+
                     if ( count % 2 == 0 ) {
                         switch ( (int)(count / 2) ) {
                         case 0:
                         case -2:
                         case -4:
-                            sign.setLine(1, items.get(index));
+                            sign.setLine(1, "<" + items.get(index) + ChatColor.BLACK + ">");
                             sign.update();
                             break;
                         case -1:
@@ -138,7 +157,7 @@ public class OmikujiSign extends JavaPlugin implements Listener {
                 } else {
                     // タスク終了
 
-                    sign.setLine(1, items.get(index));
+                    sign.setLine(1, "<" + items.get(index) + ChatColor.BLACK + ">");
                     sign.update();
 
                     // メタデータ除去

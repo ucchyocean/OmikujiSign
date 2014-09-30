@@ -12,4 +12,4 @@ pluginsフォルダに、OmikujiSign.jar を入れて、CraftBukkitを起動し�
 
 ダウンロード
 ------------
-https://github.com/ucchyocean/OmikujiSign/blob/master/release/OmikujiSign-v0.0.1.zip?raw=true
+https://github.com/ucchyocean/OmikujiSign/blob/master/release/OmikujiSign-v0.0.2.zip?raw=true
