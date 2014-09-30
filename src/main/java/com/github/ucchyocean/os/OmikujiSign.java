@@ -34,12 +34,19 @@ public class OmikujiSign extends JavaPlugin implements Listener {
     private static final int MIN_ROLL_TIMES = 15;
     private static final int MAX_ROLL_TIMES = 25;
     private static final String[] ITEMS = {
-        "§4大吉",
-        "§5吉", "§5吉",
-        "§2小吉", "§2小吉", "§2小吉",
-        "§3末吉", "§3末吉", "§3末吉",
-        "§9凶",
-        "§8大凶"
+        ChatColor.DARK_RED + "大吉",
+        ChatColor.DARK_PURPLE + "吉",
+        ChatColor.DARK_PURPLE + "吉",
+        ChatColor.DARK_PURPLE + "吉",
+        ChatColor.DARK_GREEN + "小吉",
+        ChatColor.DARK_GREEN + "小吉",
+        ChatColor.DARK_GREEN + "小吉",
+        ChatColor.DARK_GREEN + "小吉",
+        ChatColor.DARK_AQUA + "末吉",
+        ChatColor.DARK_AQUA + "末吉",
+        ChatColor.DARK_AQUA + "末吉",
+        ChatColor.DARK_BLUE + "凶",
+        ChatColor.DARK_GRAY + "大凶",
     };
 
     private static JavaPlugin instance;
